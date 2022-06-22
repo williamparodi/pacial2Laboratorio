@@ -284,6 +284,7 @@ int Passenger_removePassenger(LinkedList* pArrayListPassenger);
  */
 int Passenger_idSiguiente(LinkedList* pArrayPassenger);
 
-int Passenger_priceAccumulator(LinkedList* pArrayPassenger,float* precioTotal);
+///
+int Passenger_tipoTurista(void* passenger);
 
 #endif /* PASSENGER_H_ */

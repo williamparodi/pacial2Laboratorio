@@ -571,7 +571,7 @@ int Passenger_modPassenger(LinkedList* pArrayListPassenger)
 			if(auxPassenger != NULL)
 			{
 				itsOk=0;
-				Passenger_showOnePassenger(auxPassenger);
+				Passenger_printOneWith(auxPassenger);
 				do
 				{
 					menuModificarPasajero();
@@ -680,7 +680,7 @@ int Passenger_removePassenger(LinkedList* pArrayListPassenger)
 			if(auxPassenger!= NULL)
 			{
 				printf("Pasajero a Borrar: \n");
-				Passenger_showOnePassenger(auxPassenger);
+				Passenger_printOneWith(auxPassenger);
 				if(!utn_getInt(&opcion,"Esta seguro que quiere borrar este Pasajero? 1-Si o 2-No\n",
 						"Error,opcion incorrecta\n",1,2,5))
 				{
@@ -726,33 +726,8 @@ int Passenger_idSiguiente(LinkedList* pArrayPassenger)
 	return maximo;
 }
 
-int Passenger_priceAccumulator(LinkedList* pArrayPassenger,float* precioTotal)
-{
-	int retorno=-1;
-	int len;
-	float auxPrecio;
-	float acumuladorPrecio = 0;
-	Passenger* auxPassenger = NULL;
 
-	if(pArrayPassenger != NULL && precioTotal != NULL)
-	{
-		len=ll_len(pArrayPassenger);
 
-		for(int i=0;i<len;i++)
-		{
-			auxPassenger = ll_get(pArrayPassenger,i);
-			Passenger_getPrecio(auxPassenger, &auxPrecio);
-			if(auxPassenger != NULL)
-			{
-				acumuladorPrecio += auxPrecio;
-			}
-		}
 
-		*precioTotal = acumuladorPrecio;
-		retorno = 0;
-	}
-
-	return retorno;
-}
 
 

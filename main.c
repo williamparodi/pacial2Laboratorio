@@ -26,9 +26,9 @@ int main()
 {
 	setbuf(stdout,NULL);
     int option=0;
-    int cantidadPasajeros=0;
 
     LinkedList* listaPasajeros = ll_newLinkedList();
+
     do{
     	menuPassenger();
     	if(!utn_getInt(&option,"Ingrese una opcion:","Error,opcion invalida\n",1,10,5))
@@ -39,7 +39,6 @@ int main()
 					if(!controller_loadFromText("data.csv",listaPasajeros))
 					{
 						printf("Datos cargados con exito\n");
-						cantidadPasajeros = ll_len(listaPasajeros);
 					}
 					else
 					{
@@ -50,7 +49,6 @@ int main()
 					if(!controller_loadFromBinary("data.bin",listaPasajeros))
 					{
 						printf("Datos cargados con exito\n");
-						cantidadPasajeros = ll_len(listaPasajeros);
 					}
 					else
 					{
@@ -61,7 +59,6 @@ int main()
 					if(!controller_addPassenger(listaPasajeros))
 					{
 						printf("Alta de pasajero exitosa!\n");
-						cantidadPasajeros = ll_len(listaPasajeros);
 					}
 					else
 					{
@@ -69,7 +66,7 @@ int main()
 					}
 					break;
 				case 4:
-					if(cantidadPasajeros >0)
+					if(!ll_isEmpty(listaPasajeros))
 					{
 						if(!controller_editPassenger(listaPasajeros))
 						{
@@ -86,12 +83,11 @@ int main()
 					}
 					break;
 				case 5:
-					if(cantidadPasajeros >0)
+					if(!ll_isEmpty(listaPasajeros))
 					{
 						if(!controller_removePassenger(listaPasajeros))
 						{
 							printf("Baja con exito\n");
-							cantidadPasajeros = ll_len(listaPasajeros);
 						}
 						else
 						{
@@ -104,7 +100,7 @@ int main()
 					}
 					break;
 				case 6:
-					if(cantidadPasajeros >0)
+					if(!ll_isEmpty(listaPasajeros))
 					{
 						if(!controller_ListPassenger(listaPasajeros))
 						{
@@ -121,7 +117,7 @@ int main()
 					}
 					break;
 				case 7:
-					if(cantidadPasajeros >0)
+					if(!ll_isEmpty(listaPasajeros))
 					{
 						if(!controller_sortPassenger(listaPasajeros))
 						{
@@ -138,7 +134,7 @@ int main()
 					}
 					break;
 				case 8:
-					if(cantidadPasajeros >0)
+					if(!ll_isEmpty(listaPasajeros))
 					{
 						if(!controller_saveAsText("data.csv",listaPasajeros))
 						{
@@ -155,7 +151,7 @@ int main()
 					}
 					break;
 				case 9:
-					if(cantidadPasajeros >0)
+					if(!ll_isEmpty(listaPasajeros))
 					{
 						if(!controller_saveAsBinary("data.bin",listaPasajeros))
 						{
