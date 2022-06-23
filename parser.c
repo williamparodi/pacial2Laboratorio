@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "LinkedList.h"
 #include "Passenger.h"
-
+#define BUFFER 1000
 /** \brief Parsea los datos los datos de los pasajeros desde el archivo data.csv (modo texto).
  *
  * \param path char*
@@ -13,7 +13,7 @@
 int parser_PassengerFromText(FILE* pFile , LinkedList* pArrayListPassenger)
 {
 	int itsOk = -1;
-	char aux[7] [1000];
+	char aux[7] [BUFFER];
 	int cantidad;
 	Passenger* auxPassenger = NULL;
 
@@ -51,10 +51,10 @@ int parser_PassengerFromBinary(FILE* pFile , LinkedList* pArrayListPassenger)
 	int itsOk = -1;
 	int cantidad;
 	int auxId;
-	char auxNombre[1000];
-	char auxApellido[1000];
+	char auxNombre[BUFFER];
+	char auxApellido[BUFFER];
 	float auxPrecio;
-	char auxCodigo[1000];
+	char auxCodigo[BUFFER];
 	int auxTipo;
 	int auxEstado;
 	Passenger* auxPassenger = NULL;

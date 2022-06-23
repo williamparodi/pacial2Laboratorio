@@ -272,8 +272,13 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 {
 	int itsOk = -1;
 	int len;
-	Passenger* auxPassenger;
-	FILE* pFile = fopen(path,"wb");
+	Passenger* auxPassenger = NULL;
+	FILE* pFile;
+
+	if(pArrayListPassenger != NULL && path != NULL)
+	{
+		pFile=fopen(path,"wb");
+	}
 
 	if(pFile != NULL)
 	{

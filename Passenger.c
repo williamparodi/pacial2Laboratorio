@@ -688,6 +688,7 @@ int Passenger_removePassenger(LinkedList* pArrayListPassenger)
 					{
 						index = ll_indexOf(pArrayListPassenger,auxPassenger);
 						ll_pop(pArrayListPassenger,index);// o puedo usar remove
+						Passenger_delete(auxPassenger);
 						printf("Pasajero borrado\n");
 						itsOk=0;
 					}
