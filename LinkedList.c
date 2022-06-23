@@ -59,10 +59,10 @@ static Node* getNode(LinkedList* this, int nodeIndex)
 
 	if(this != NULL && nodeIndex >=0 && nodeIndex < ll_len(this))
 	{
-		pNode = this->pFirstNode;//me hubico en el primer nodo
-		for(int i=0;i<nodeIndex;i++)//itero hasta al anterior al que yo quiero
+		pNode = this->pFirstNode;
+		for(int i=0;i<nodeIndex;i++)
 		{
-			pNode = pNode->pNextNode;//accedo al campo netxNode
+			pNode = pNode->pNextNode;
 		}
 	}
     return pNode;
@@ -96,24 +96,23 @@ static int addNode(LinkedList* this, int nodeIndex,void* pElement)
     int returnAux = -1;
     Node* pNextNode = NULL;
     Node* pAuxNode = NULL;
-    if(this != NULL && nodeIndex >=0 && nodeIndex <= ll_len(this))// por si len es 0
+    if(this != NULL && nodeIndex >=0 && nodeIndex <= ll_len(this))
     {
     	pNextNode = (Node*) malloc(sizeof(Node));
-    	if(pNextNode != NULL)// porque si es null no sigo, si estuviera vacia agregaria tamb el primero tamb
+    	if(pNextNode != NULL)
     	{
     		if(nodeIndex == 0)
     		{
-    			pNextNode->pNextNode = this->pFirstNode;// me guardo la referecia del primero
-    			// si fuera el primero habria un NULL fistNode y estaria bien
-    			this->pFirstNode = pNextNode;//ahora appunta al que hice
+    			pNextNode->pNextNode = this->pFirstNode;
+    			this->pFirstNode = pNextNode;
     		}
     		else
     		{
-    			pAuxNode = getNode(this,nodeIndex -1);//guardo el nodo anterior
+    			pAuxNode = getNode(this,nodeIndex -1);
     			if(pAuxNode != NULL)
     			{
-    				pNextNode->pNextNode = pAuxNode->pNextNode;//no pierdo la dire del proximo y si fuera el ultimo seria un null
-    				pAuxNode->pNextNode = pNextNode;//Apunto al nuevo nodo
+    				pNextNode->pNextNode = pAuxNode->pNextNode;
+    				pAuxNode->pNextNode = pNextNode;
     			}
     		}
     		pNextNode->pElement = pElement;
@@ -146,7 +145,7 @@ int test_addNode(LinkedList* this, int nodeIndex,void* pElement)
                         ( 0) Si funciono correctamente
  *
  */
-int ll_add(LinkedList* this, void* pElement)// lo agrego
+int ll_add(LinkedList* this, void* pElement)
 {
     int returnAux = -1;
     int len = ll_len(this);
@@ -167,17 +166,17 @@ int ll_add(LinkedList* this, void* pElement)// lo agrego
                             (pElement) Si funciono correctamente
  *
  */
-void* ll_get(LinkedList* this, int index)// obtengo el elemneto(pasajero,etc
+void* ll_get(LinkedList* this, int index)// obtengo el elemneto(pasajero,etc)
 {
     void* returnAux = NULL;
     Node* pNode = NULL;
 
-    if( this != NULL && index >=0 && index < ll_len(this))//no me paso del largo de la lista
+    if( this != NULL && index >=0 && index < ll_len(this))
     {
-    	pNode = getNode(this,index);//obtengo la direccion de memoria del nodo
+    	pNode = getNode(this,index);
     	if(pNode != NULL)
     	{
-    		returnAux = pNode->pElement;// para retornar el elemento
+    		returnAux = pNode->pElement;
     	}
     }
 
@@ -201,10 +200,10 @@ int ll_set(LinkedList* this, int index,void* pElement)
 
     if( this != NULL && index >=0 && index < ll_len(this))
     {
-    	pNode = getNode(this,index);//obtengo la direccion de memoria del nodo
+    	pNode = getNode(this,index);
     	if(pNode != NULL)
     	{
-    		pNode->pElement = pElement;//la modifico
+    		pNode->pElement = pElement;
     		returnAux =0;
     	}
     }
@@ -228,19 +227,19 @@ int ll_remove(LinkedList* this,int index)
     Node* pAuxNodeDos = NULL;
     if(this != NULL && index >=0 && index < ll_len(this))//
     {
-    	pAuxNode = getNode(this,index);//obtenfo el quiero eleminar
-    	if(pAuxNode != NULL)// porque si es null no sigo, si estuviera vacia agregaria tamb el primero tamb
+    	pAuxNode = getNode(this,index);
+    	if(pAuxNode != NULL)
     	{
     		if(index == 0)
     		{
-    			this->pFirstNode = pAuxNode ->pNextNode;// me guardo la referecia del primero
+    			this->pFirstNode = pAuxNode ->pNextNode;
     		}
     		else
     		{
-    			pAuxNodeDos = getNode(this,index -1);//guardo el nodo anterior
+    			pAuxNodeDos = getNode(this,index -1);
     			if(pAuxNodeDos != NULL)
     			{
-    				pAuxNodeDos->pNextNode = pAuxNode->pNextNode;// le asigno la direccion del que borra q apuntaba al siguiente
+    				pAuxNodeDos->pNextNode = pAuxNode->pNextNode;
     			}
     		}
     		this->size--;
@@ -267,7 +266,7 @@ int ll_clear(LinkedList* this)
     if(this != NULL)
     {
     	len = ll_len(this);
-    	if(len >0)// si es mayor borro
+    	if(len >0)
     	{
     		for(int i=0;i< len;i++)
     		{
@@ -349,7 +348,7 @@ int ll_isEmpty(LinkedList* this)
 
     if(this != NULL)
     {
-    	if(ll_len(this) >0)// de esta manera accedo al size para saber q esta cargada
+    	if(ll_len(this) >0)
     	{
     		returnAux = 0;
     	}
@@ -375,7 +374,7 @@ int ll_push(LinkedList* this, int index, void* pElement)
 {
     int returnAux = -1;
 
-    if(this != NULL && index >=0 && index <= ll_len(this))//recordar q puede ser 0 el index y si es la ulitma lo agrego tamb
+    if(this != NULL && index >=0 && index <= ll_len(this))
     {
     	returnAux = addNode(this,index,pElement);
     }
@@ -396,9 +395,9 @@ void* ll_pop(LinkedList* this,int index)
 {
     void* returnAux = NULL;
 
-    if(this != NULL && index >=0 && index < ll_len(this))//estoy eliminando asi que tiene q ser menor y no igual
+    if(this != NULL && index >=0 && index < ll_len(this))
     {
-    	returnAux = ll_get(this,index);//obtengo el elemento antes de borrarlo no me importa si tiene null o no
+    	returnAux = ll_get(this,index);
     	ll_remove(this, index);
     }
 
@@ -450,14 +449,14 @@ int ll_containsAll(LinkedList* this,LinkedList* this2)
 
     if(this != NULL && this2 != NULL)
     {
-    	returnAux = 1;// doy por sentado que encontro
+    	returnAux = 1;
     	len = ll_len(this2);
     	for(int i=0;i<len;i++)
     	{
     		pAux = ll_get(this2,i);
-    		if(!ll_contains(this,pAux))// si no lo contiene el elemento devuelve 0
+    		if(!ll_contains(this,pAux))
     		{
-    			returnAux = 0;//no esta y rompo
+    			returnAux = 0;
     			break;
     		}
     	}
@@ -480,15 +479,15 @@ LinkedList* ll_subList(LinkedList* this,int from,int to)
     LinkedList* cloneSublist = NULL;
     void* pAux = NULL;
 
-    if(this != NULL && from >=0 && from < ll_len(this) && to > from && to <= ll_len(this))// menor porque no esta incluido el ultimo
+    if(this != NULL && from >=0 && from < ll_len(this) && to > from && to <= ll_len(this))
     {
     	cloneSublist = ll_newLinkedList();
     	if(cloneSublist != NULL)
     	{
     		for(int i=from;i<to;i++)
     		{
-    			pAux = ll_get(this, i);//trae el elemnto
-    			ll_add(cloneSublist,pAux);// lo copia a la sub
+    			pAux = ll_get(this, i);
+    			ll_add(cloneSublist,pAux);
     		}
     	}
     }
@@ -531,7 +530,7 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     void* pAuxElement = NULL;
     void* pAuxElement2 =  NULL;
 
-    if(this != NULL && (order == 0 || order == 1) && pFunc != NULL)// el nombre ya es la direccion de memoria es un puntero
+    if(this != NULL && (order == 0 || order == 1) && pFunc != NULL)
     {
     	len = ll_len(this);
     	do
@@ -540,8 +539,8 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
     		len--;
     		for(int i=0;i<len;i++)
     		{
-    			pAuxElement = ll_get(this, i);//obtengo la dir de memoria 1
-    			pAuxElement2 = ll_get(this, i+1);//obtengo la dir de memoria 2 no pierdo los datos
+    			pAuxElement = ll_get(this, i);
+    			pAuxElement2 = ll_get(this, i+1);
     			if((pFunc(pAuxElement,pAuxElement2) > 0 && order == 1) ||
     					(pFunc(pAuxElement,pAuxElement2) < 0 && order == 0))
     			{
