@@ -728,7 +728,50 @@ int Passenger_idSiguiente(LinkedList* pArrayPassenger)
 }
 
 
+int Passenger_tipoTurista(void* passenger)
+{
+	int retorno = -1;
+	int auxTipo;
 
+	if(passenger != NULL)
+	{
+		Passenger_getTipoPasajero(passenger,&auxTipo);
+		if(auxTipo == 3)
+		{
+			retorno = 0;
+		}
+	}
+	return retorno;
+}
 
+int Passenger_tipoPrimera(void* passenger)
+{
+	int retorno = -1;
+	int auxTipo;
 
+	if(passenger != NULL)
+	{
+		Passenger_getTipoPasajero(passenger,&auxTipo);
+		if(auxTipo == 1)
+		{
+			retorno = 0;
+		}
+	}
+	return retorno;
+}
 
+int Passenger_tipoEjecutivo(void* passenger)
+{
+	int retorno = -1;
+	int auxTipo;
+
+	if(passenger != NULL)
+	{
+		Passenger_getTipoPasajero(passenger,&auxTipo);
+		if(auxTipo == 2)
+		{
+			retorno = 0;
+		}
+	}
+	return retorno;
+}

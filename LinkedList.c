@@ -557,6 +557,45 @@ int ll_sort(LinkedList* this, int (*pFunc)(void* ,void*), int order)
 
 }
 
+int ll_count(LinkedList* this, int (*fn)(void* element))
+{
+	int acumuladorTipo=0;
+	void* auxElement = NULL;
+	int len;
+	if(fn != NULL && this != NULL)
+	{
+		len = ll_len(this);
+		for(int i=0;i<len;i++)
+		{
+			auxElement = ll_get(this, i);
 
+			if(!fn(auxElement))
+			{
+				acumuladorTipo++;
+			}
+		}
+	}
+	return acumuladorTipo;
+}
 
+LinkedList* ll_filter(LinkedList* this,int (*pFunc)(void*))
+{
+	LinkedList* listaFiltrada = NULL;
+	void* pAuxElement = NULL;
+	int len;
 
+	if(this != NULL && pFunc != NULL)
+	{
+		listaFiltrada = ll_newLinkedList();
+		len = ll_len(this);
+		for(int i=0;i<len;i++)
+		{
+			pAuxElement = ll_get(this,i);
+			if(!pFunc(pAuxElement))
+			{
+				ll_add(listaFiltrada,pAuxElement);
+			}
+		}
+	}
+	return listaFiltrada;
+}

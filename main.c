@@ -26,12 +26,15 @@ int main()
 {
 	setbuf(stdout,NULL);
     int option=0;
+    int cantidadTipoPrimera = 0;
+    int cantidadTipoEjecutivo=0;
+    int cantidadTipoTurista=0;
 
     LinkedList* listaPasajeros = ll_newLinkedList();
 
     do{
     	menuPassenger();
-    	if(!utn_getInt(&option,"Ingrese una opcion:","Error,opcion invalida\n",1,10,5))
+    	if(!utn_getInt(&option,"Ingrese una opcion:","Error,opcion invalida\n",1,11,5))
     	{
     		switch(option)
 			{
@@ -165,6 +168,19 @@ int main()
 					else
 					{
 						printf("No hay datos guardados\n");
+					}
+					break;
+				case 11:
+					printf("Informes:\n");
+					cantidadTipoPrimera = ll_count(listaPasajeros,Passenger_tipoPrimera);
+					cantidadTipoEjecutivo = ll_count(listaPasajeros,Passenger_tipoEjecutivo);
+					cantidadTipoTurista = ll_count(listaPasajeros,Passenger_tipoTurista);
+					printf("Cantidad Primera: %d\n",cantidadTipoPrimera);
+					printf("Cantidad Ejecutivo: %d\n",cantidadTipoEjecutivo);
+					printf("Cantidad Turista: %d\n",cantidadTipoTurista);
+					if(!controller_filtroTipoPrimera(listaPasajeros))
+					{
+						printf("Lista filtrada por tipo Primera clase guardada!\n");
 					}
 					break;
 				case 10:

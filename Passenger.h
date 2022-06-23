@@ -285,5 +285,8 @@ int Passenger_removePassenger(LinkedList* pArrayListPassenger);
 int Passenger_idSiguiente(LinkedList* pArrayPassenger);
 
 ///
-
+int Passenger_cantidadTipoPrimera(void* pArrayPassenger);
+int Passenger_tipoTurista(void* passenger);
+int Passenger_tipoPrimera(void* passenger);
+int Passenger_tipoEjecutivo(void* passenger);
 #endif /* PASSENGER_H_ */
