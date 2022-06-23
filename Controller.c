@@ -300,7 +300,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListPassenger)
 }
 
 
-int controller_filtroTipoPrimera(LinkedList* listTipoPasajero)
+int controller_filtroTipoTurista(LinkedList* listTipoPasajero)
 {
 	int retorno= -1;
 	LinkedList* listaFiltrada = NULL;
@@ -312,6 +312,7 @@ int controller_filtroTipoPrimera(LinkedList* listTipoPasajero)
 		{
 			controller_ListPassenger(listaFiltrada);
 			controller_saveAsText("dataListaTutista.cvs",listaFiltrada);
+			controller_saveAsBinary("dataListaTurista.bin",listaFiltrada);
 			retorno=0;
 		}
 	}

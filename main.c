@@ -170,7 +170,7 @@ int main()
 						printf("No hay datos guardados\n");
 					}
 					break;
-				case 11:
+				case 10:
 					printf("Informes:\n");
 					cantidadTipoPrimera = ll_count(listaPasajeros,Passenger_tipoPrimera);
 					cantidadTipoEjecutivo = ll_count(listaPasajeros,Passenger_tipoEjecutivo);
@@ -178,18 +178,18 @@ int main()
 					printf("Cantidad Primera: %d\n",cantidadTipoPrimera);
 					printf("Cantidad Ejecutivo: %d\n",cantidadTipoEjecutivo);
 					printf("Cantidad Turista: %d\n",cantidadTipoTurista);
-					if(!controller_filtroTipoPrimera(listaPasajeros))
+					if(!controller_filtroTipoTurista(listaPasajeros))
 					{
-						printf("Lista filtrada por tipo Primera clase guardada!\n");
+						printf("Lista filtrada por clase Turista guardada!\n");
 					}
 					break;
-				case 10:
+				case 11:
 					printf("Gracias por utilizar nuestro programa\n");
 					option=10;
 					break;
 			}
     	}
-    }while(option != 10);
+    }while(option != 11);
 
     ll_deleteLinkedList(listaPasajeros);
     return 0;

@@ -13,7 +13,8 @@ void menuPassenger()
 	printf("7. Ordenar pasajeros\n");
 	printf("8. Guardar los datos de los pasajeros en el archivo data.csv (modo texto).\n");
 	printf("9. Guardar los datos de los pasajeros en el archivo data.bin (modo binario).\n");
-	printf("10. Salir\n");
+	printf("10. Informes\n");
+	printf("11. Salir\n");
 }
 
 void menuModificarPasajero()
